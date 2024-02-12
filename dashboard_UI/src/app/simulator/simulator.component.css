@@ -1,0 +1,156 @@
+.title{
+    font-size: 50px;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    float: left;
+}
+
+.body{
+  width: 100%;
+  float: left;
+}
+
+.options {
+  width: 40%;
+  float: left;
+}
+
+.grapg {
+  width: 60%;
+  float: right;
+  margin: 200px 0;
+}
+
+.generator-loader {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #3498db;
+  width: 12px;
+  height: 12px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin: 5px;
+}
+
+
+.simulator-loader {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin: 200px 300px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.scenario-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.scenario-radio-button {
+  margin: 5px;
+}
+
+.radio-margin {
+  padding: 5px 5px 5px 0;
+}
+
+.checkbox-margin {
+  padding: 5px;
+}
+
+.population-component{
+  border: 2px solid #A9A9A9;
+  border-radius: 10px;
+  background-color: #D3D3D3;
+  padding: 10px;
+}
+
+.population-slider-part{
+  width: 100%;
+}
+
+.population-slider{
+  width: 80%;
+  float: left;
+}
+
+.population-value {
+  width: 20%;
+  float: left;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+
+
+.epidemic-simulation{
+  margin-top: 30px;
+  border: 2px solid #A9A9A9;
+  border-radius: 10px;
+  background-color: #D3D3D3;
+  padding: 10px;
+}
+
+#radio-group-label {
+  font-size: 20px;
+}
+
+.green-text {
+  padding-top: 5px;
+  color: green;
+}
+
+.red-text {
+  padding-top: 5px;
+  color: red;
+}
+
+
+.epidemic-probability {
+  width: 100%;
+  float: left;
+}
+
+
+.probability-slider-part{
+  width: 100%;
+  float: left;
+}
+
+.probability-slider{
+  width: 80%;
+  float: left;
+  padding: 0px;
+  height: 32px;
+}
+
+.probability-value {
+  width: 20%;
+  float: left;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+.probability-label {
+  width: 100%;
+  float: left;
+}
+
+
+.graph {
+  width: 60%;
+  float: left;
+}

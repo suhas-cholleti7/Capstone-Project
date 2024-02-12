@@ -1,0 +1,139 @@
+<div class="title">
+  Epidemic Simulation Dashboard
+</div>
+
+<div class="body">
+  <div class="options">
+    <div class="population-component">
+      <div class="population-slider-part">
+        <label id="radio-group-label">Total Population</label>
+        <mat-slider
+            class="population-slider"
+            [max]="5000"
+            [min]="1000"
+            [step]="100"
+            [thumbLabel]="true"
+            [displayWith]="formatLabel"
+            [(ngModel)]="population"
+            aria-labelledby="example-name-label">
+        </mat-slider>
+        <div class="population-value">
+          {{population}}
+        </div>
+      </div>
+
+
+
+      <button type="button" name="button" (click)="createPopulation()"  mat-raised-button>Create Population</button>
+      <div class="generator-loader" *ngIf="is_population_generating"></div>
+      <div class="red-text" *ngIf="!is_population_generated && !is_population_generating">
+        Create a Population before running a simulation
+      </div>
+      <div class="green-text" *ngIf="is_population_generated && !is_population_generating">
+        Population Created
+      </div>
+    </div>
+
+
+
+
+
+    <div class="epidemic-simulation">
+      <div class="epidemic-scenario">
+        <label id="radio-group-label" style="display:block">Pick your Scenario</label>
+        <mat-radio-group
+          aria-labelledby="radio-group-label"
+          class="radio-margin"
+          [(ngModel)]="selectedScenario">
+          <mat-radio-button class="scenario-radio-button" *ngFor="let scenario of scenarios" [value]="scenario">
+            {{scenario}}
+          </mat-radio-button>
+        </mat-radio-group>
+
+        <label id="radio-group-label" style="display:block">Select additional Criteria</label>
+
+        <mat-checkbox class="checkbox-margin" [(ngModel)]="checked_friends_interation" [disabled]="selectedScenario=='Total lockdown'">
+          Friends Interaction
+        </mat-checkbox>
+
+        <mat-checkbox class="checkbox-margin" [(ngModel)]="checked_birthday" [disabled]="selectedScenario=='Total lockdown'">
+          Birthday Celebrations
+        </mat-checkbox>
+
+        <mat-checkbox class="checkbox-margin" [(ngModel)]="checked_vaccination">
+          Vaccination
+        </mat-checkbox>
+
+
+        <mat-checkbox class="checkbox-margin" [(ngModel)]="checked_mutations">
+          Mutations
+        </mat-checkbox>
+
+
+      </div>
+
+
+      <div class="epidemic-probability" *ngFor="let probability of probabilities">
+        <div class="probability-slider-part">
+          <label class="probability-label">{{probability["display"]}}</label>
+          <mat-slider
+              class="probability-slider"
+              [max]="1"
+              [min]="0"
+              [step]="0.1"
+              [thumbLabel]="true"
+              [displayWith]="formatLabelprobability"
+              [(ngModel)]="probability['value']"
+              aria-labelledby="example-name-label">
+          </mat-slider>
+          <div class="probability-value">
+            {{probability["value"]}}
+            <!-- probability['value'] -->
+          </div>
+        </div>
+      </div>
+
+
+      <button type="button" name="button" (click)="simulateVirus()"  mat-raised-button>Run Simulation</button>
+    </div>
+
+
+
+
+
+  </div>
+  <div class="graph">
+    <div class="simulator-loader" *ngIf="is_running_simulation"></div>
+    <div class="" *ngIf="is_simulation_done">
+      <ngx-charts-line-chart
+        [view]="[900,400]"
+        [scheme]="colorScheme"
+        [legend]="legend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxis]="xAxis"
+        [yAxis]="yAxis"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [timeline]="timeline"
+        [results]="graph_data['Data']"
+        >
+        <!-- (select)="onSelect($event)"
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)" -->
+      </ngx-charts-line-chart>
+    </div>
+
+    <!-- <div style="display: block;">
+      <canvas baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div> -->
+  </div>
+
+</div>
